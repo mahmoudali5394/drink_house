@@ -1,9 +1,39 @@
 {
-  "storeName": "اسم متجرك",
-  "tagline": "توريد الصوصات والسيرب والعصائر والبن ومستلزمات الكافيهات والفنادق - الغردقة",
-  "whatsapp": "201000000000",
-  "currency": "ج.م",
-  "showPrices": true,
-  "minOrder": 0,
-  "deliveryNote": "التوصيل داخل الغردقة فقط"
+ "storeName": "Drink House",
+ "tagline": "توريد الصوصات والسيرب والعصائر الطبيعية والبن ومستلزمات الكافيهات والفنادق",
+ "whatsapp": "201551515274",
+ "currency": "ج.م",
+ "showPrices": true,
+ "minOrder": 0,
+ "deliveryNote": "التوصيل داخل الغردقة فقط",
+ "phones": [
+  "01551515274",
+  "01031215072"
+ ],
+ "address": "الغردقة - شارع الحجاز (كمبوند بلو ستار)",
+ "logo": "logo.png",
+ "banners": [
+  {
+   "image": "images/banner-ismailia.jpg",
+   "brand": "الإسماعيلية فريش"
+  },
+  {
+   "image": "images/banner-rotus.jpg",
+   "brand": "لوتس"
+  },
+  {
+   "image": "images/banner-bubble.jpg"
+  },
+  {
+   "image": "images/banner-paradise.jpg",
+   "brand": "باراديس"
+  },
+  {
+   "image": "images/banner-icecream.jpg"
+  },
+  {
+   "image": "images/banner-mango.jpg",
+   "brand": "الإسماعيلية فريش"
+  }
+ ]
 }

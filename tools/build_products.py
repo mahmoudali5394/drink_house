@@ -21,9 +21,12 @@ def brand_of(name, rules):
                 return b["name"]
     return None
 
+IMG_RULES = []
 def main():
+    global IMG_RULES
     src = sys.argv[1]; keep_all = "--include-unbranded" in sys.argv
     rules = json.load(open(f"{ROOT}/data/brands.json", encoding="utf-8"))
+    IMG_RULES = json.load(open(f"{ROOT}/data/image_rules.json", encoding="utf-8")) if os.path.exists(f"{ROOT}/data/image_rules.json") else []
     img_dir = f"{ROOT}/images"; seen, out, unbranded, issues = set(), [], [], []
     for r in csv.DictReader(open(src, encoding="utf-8-sig")):
         name = re.sub(r"\s+", " ", pick(r, "Name", "name")).strip()
@@ -37,6 +40,7 @@ def main():
         brand = pick(r, "brand") or brand_of(name, rules)
         t = pick(r, "type") or next((v for k, v in TYPE_KEYS if k in name + " "), "")
         image = next((f"images/{sku}.{e}" for e in ("jpg","png","webp") if sku and os.path.exists(f"{img_dir}/{sku}.{e}")), "")
+        image = image or next((r["image"] for r in IMG_RULES if all(k.lower() in name.lower() for k in r["all"]) and os.path.exists(f"{ROOT}/{r['image']}")), "")
         p = {"id": sku or f"p{len(out)+1}", "name": name, "brand": brand or "أخرى", "type": t, "price": price, "image": image}
         (out if (brand or keep_all) else unbranded).append(p)
     json.dump(out, open(f"{ROOT}/data/products.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
